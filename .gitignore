@@ -1,4 +1,5 @@
 media
+imagenes
 **/__pycache__
 venv
 db.sqlite3
