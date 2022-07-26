@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="p-3">
+            <div class="card card-body bg-black">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid">
+                    </div>
+                    <div class="col-9">
+                        <h2>{{ post.tittle }}</h2>
+                        <!-- Se imprime la descripcion |striptags, elimina las etiquetas|Imprime las 100 primeras letras -->
+                        <p>{{ post.description|striptags|truncatechars:100}}</p>
+                        <p>{{ post.date| date:'M d Y'}}</p>
+                        <a href="{% url 'blog:postDetail' post.id %}" class="btn btn-primary">{{ post.tittle }}</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

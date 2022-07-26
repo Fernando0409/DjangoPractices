@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+    <header class="row bg-black">
+        <div class="col-md-4">
+            <img src="{% static 'portafolio/PW_W.png' %}" alt="" height="450px">
+        </div>
+        <div class="col-md-8 my-auto">
+            <h1>I am <strong>Wicho</strong> </h1>
+            <h3>I'm Software Engineer</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur cupiditate ea eaque eum facilis
+                minus optio, quidem. Delectus ex laborum molestias nam necessitatibus nihil nobis quas. Aliquam atque
+                dignissimos ea eligendi et fugiat fugit illum iure, minima modi molestias nisi suscipit voluptatibus!
+                Amet eveniet laudantium necessitatibus obcaecati officiis placeat reiciendis rem voluptates voluptatibus.
+                Ab adipisci assumenda at atque beatae, consequatur distinctio dolores ea et, expedita fugiat in ipsum
+                iste magni minus nam necessitatibus quam quia quis repellat suscipit tempora tempore temporibus voluptate,
+                voluptatum? Dolor dolorum in iure laborum molestiae perferendis sed, totam veritatis. Aliquid blanditiis
+                eos obcaecati temporibus veritatis? Dignissimos!</p>
+            <a href="{% static 'portafolio/CV_MartinezSilva.pdf' %}" target="_blank" class="btn btn-primary btn-lg rounded-0 my-3">Download CV</a>
+        </div>
+    </header>
+
+    <div class="row my-4 text-center">
+        <h3>My Projects</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, necessitatibus!</p>
+
+        {% for project in projects %}   <!-- For loop para recorrer un array de objetos -->
+            <div class="col-md-4 p-4">
+                <div class="card bg-black card-project">
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}" class="img-fluid" card-img-top>
+                    <div class="card-body">
+                        <h2>{{ project.title}} </h2> <!-- Sintaxis para imprimir un valor de python en html -->
+                        <p>{{ project.description }}</p>
+
+                        {% if project.urlProyect %}
+                            <a href="{{ project.urlProyect }}" class="btn btn-light rounded-0 btn-sm"
+                               target="_blank">{{ project.urlProyect }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
